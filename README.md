@@ -6,7 +6,7 @@
 - [链表](./数据结构/ListNode.php)
 - [多叉树](./数据结构/NTreeNode.php)
 - [并查集](./数据结构/UnionFind.php)
-- [LRU](./数据结构/LRU.php)
+- [LRU](数据结构/LRUCache.php)
 
 ## 排序(log N)
 
