@@ -29,6 +29,12 @@ class LRUCache
         return -1;
     }
 
+    private function removeKeyFromKeyList($key)
+    {
+        $pos = array_search($key, $this->keyList);
+        unset($this->keyList[$pos]);
+    }
+
     /**
      * @param Integer $key
      * @param Integer $value
@@ -46,12 +52,6 @@ class LRUCache
         }
         $this->map[$key] = $value;
         array_push($this->keyList, $key);
-    }
-
-    private function removeKeyFromKeyList($key)
-    {
-        $pos = array_search($key, $this->keyList);
-        unset($this->keyList[$pos]);
     }
 }
 

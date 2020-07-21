@@ -12,6 +12,17 @@
 class UnionFind
 {
     private $count;
+    private $size;
+    private $parent = [];
+
+    public function __construct($n)
+    {
+        $this->count = $n;
+        for ($i = 0; $i < $n; $i++) {
+            $this->parent[$i] = $i;
+            $this->size[$i] = $i;
+        }
+    }
 
     /**
      * @return mixed
@@ -29,28 +40,7 @@ class UnionFind
         return $this->size;
     }
 
-    private $size;
-    private $parent = [];
-
-    public function __construct($n)
-    {
-        $this->count = $n;
-        for ($i = 0; $i < $n; $i++) {
-            $this->parent[$i] = $i;
-            $this->size[$i] = $i;
-        }
-    }
-
     // 返回根节点
-    public function find($x)
-    {
-        while ($this->parent[$x] != $x) {
-            // 节点压缩
-            $this->parent[$x] = $this->parent[$this->parent[$x]];
-            $x = $this->parent[$x];
-        }
-        return $x;
-    }
 
     public function union($a, $b)
     {
@@ -69,7 +59,18 @@ class UnionFind
         $this->count--;
     }
 
+    public function find($x)
+    {
+        while ($this->parent[$x] != $x) {
+            // 节点压缩
+            $this->parent[$x] = $this->parent[$this->parent[$x]];
+            $x = $this->parent[$x];
+        }
+        return $x;
+    }
+
     // 验证根节点是否是同一个
+
     public function connected($a, $b)
     {
         $rootA = $this->find($a);

@@ -22,6 +22,6 @@ function fastSort($arr)
     return array_merge($left, [$mid], $right);
 }
 
-$arr = [3,2,1,4,5,8,5,7];
+$arr = [3, 2, 1, 4, 5, 8, 5, 7];
 var_dump(fastSort($arr));
 
