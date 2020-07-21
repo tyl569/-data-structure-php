@@ -10,7 +10,8 @@
 
 ## 排序(log N)
 
-- 合并排期
-- 快速排序
+- [合并排期](./排序/MergeSort.php)
+- [快速排序](./排序/FastSort.php)
+- [堆排序](./排序/HeapSort.php)
 
 ## 高频算法题
