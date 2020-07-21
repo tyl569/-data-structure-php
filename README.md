@@ -2,11 +2,11 @@
 
 ## 数据结构
 
-- 二叉树
-- 链表
-- 多叉树
-- 并查集
-- LRU
+- [二叉树](./数据结构/TreeNode.php)
+- [链表](./数据结构/ListNode.php)
+- [多叉树](./数据结构/NTreeNode.php)
+- [并查集](./数据结构/UnionFind.php)
+- [LRU](./数据结构/LRU.php)
 
 ## 排序(log N)
 
