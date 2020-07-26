@@ -1,5 +1,9 @@
 # data-structure-php
 
+##
+
+此项目主要整理高频的数据结构和算法面试题，实现语言为PHP。面试题主要来源于LeetCode和牛客。
+
 ## 数据结构
 
 - [二叉树](./数据结构/TreeNode.php)
