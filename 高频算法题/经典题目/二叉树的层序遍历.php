@@ -53,7 +53,32 @@ class Solution
         $this->deepTrace($rootNode->right, $level + 1);
     }
 
-    // 广度优先
+    // 迭代解法
+    function levelOrder2($root)
+    {
+        if (empty($root)) {
+            return [];
+        }
+        $queue = new SplQueue();
+        $queue->push($root);
+        $res = [];
+        $level = 0;
+        while (!$queue->isEmpty()) {
+            $nums = $queue->count();
+            for ($i = 0; $i < $nums; $i++) {
+                $node = $queue->dequeue();
+                $res[$level][] = $node->val;
+                if ($node->left != null) {
+                    $queue->push($node->left);
+                }
+                if ($node->right != null) {
+                    $queue->push($node->right);
+                }
+            }
+            $level++;
+        }
+        return $res;
+    }
 }
 
 mock();
@@ -76,5 +101,9 @@ function mock()
 
     $ret = (new Solution())->levelOrder($rootNode);
     var_dump($ret);
+
+    $ret = (new Solution())->levelOrder2($rootNode);
+    var_dump($ret);
+
     echo "======= test case end =======\n";
 }
