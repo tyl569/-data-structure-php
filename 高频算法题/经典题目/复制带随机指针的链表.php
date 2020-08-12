@@ -40,8 +40,6 @@
  * 节点数目不超过 1000 。
  */
 
-require_once "../../数据结构/Node.php";
-
 class Solution
 {
     function copyRandomList($head)
