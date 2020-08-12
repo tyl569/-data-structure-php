@@ -1,46 +1,67 @@
 <?php
 /**
  * 来源：力扣（LeetCode）
- * 链接：https://leetcode-cn.com/problems/merge-sorted-array
+ * 链接：https://leetcode-cn.com/leetbook/read/2020-top-interview-questions/xoy5lc/
  *
+ * 给你一个字符串 S、一个字符串 T 。请你设计一种算法，可以在 O(n) 的时间复杂度内，从字符串 S 里面找出：包含 T 所有字符的最小子串。
  *
- * 给你两个有序整数数组 nums1 和 nums2，请你将 nums2 合并到 nums1 中，使 nums1 成为一个有序数组。
- * 说明:
- * 初始化 nums1 和 nums2 的元素数量分别为 m 和 n 。
- * 你可以假设 nums1 有足够的空间（空间大小大于或等于 m + n）来保存 nums2 中的元素。
- * 示例:
- * 输入:
- * nums1 = [1,2,3,0,0,0], m = 3
- * nums2 = [2,5,6],       n = 3
- * 输出: [1,2,2,3,5,6]
+ *  
+ *
+ * 示例：
+ *
+ * 输入：S = "ADOBECODEBANC", T = "ABC"
+ * 输出："BANC"
+ *  
+ *
+ * 提示：
+ *
+ * 如果 S 中不存这样的子串，则返回空字符串 ""。
+ * 如果 S 中存在这样的子串，我们保证它是唯一的答案。
  */
 
 class Solution
 {
 
-    function merge(&$nums1, $m, $nums2, $n)
+    /**
+     * @param String $s
+     * @param String $t
+     * @return String
+     */
+    function minWindow($s, $t)
     {
-        if (empty($nums2)) {
-            return $nums1;
+        $left = $start = $right = 0;
+        $target = [];
+        $window = [];
+        $minLen = PHP_INT_MAX;
+        $match = 0;
+        for ($i = 0; $i < strlen($t); $i++) {
+            isset($target[$t{$i}]) ? $target[$t{$i}]++ : ($target[$t{$i}] = 1);
         }
-        $i = $m - 1;
-        $j = $n - 1;
-        $end = ($m + $n) - 1;
-        while ($i >= 0 && $j >= 0) {
-            if ($nums1[$i] > $nums2[$j]) {
-                $nums1[$end] = $nums1[$i]; //将较大的数字放后面
-                $i--;
-            } else {
-                $nums1[$end] = $nums2[$j];
-                $j--;
+        while ($right < strlen($s)) {
+            $char = $s{$right};
+            if ($target[$char]) {
+                isset($window[$char]) ? $window[$char]++ : ($window[$char] = 1);
+                if ($window[$char] == $target[$char]) { // 如果字符的个数和目标字符个数一致，则匹配+1
+                    $match++;
+                }
             }
-            $end--;
+            $right++; // 窗口继续向右滑动
+            while ($match == count($target)) { // 如果匹配个数达到要求，窗口左边界开始右滑
+                if ($right - $left <= $minLen) {
+                    $start = $left;
+                    $minLen = $right - $left;
+                }
+                $char = $s{$left};
+                if ($target[$char]) {
+                    $window[$char]--;
+                    if ($window[$char] < $target[$char]) {
+                        $match--;
+                    }
+                }
+                $left++; // 窗口左边界向右滑动
+            }
         }
-        while ($j >= 0) {
-            $nums1[$j] = $nums2[$j];
-            $j--;
-        }
-        return $nums1;
+        return $minLen == PHP_INT_MAX ? "" : substr($s, $start, $minLen);
     }
 }
 
@@ -48,10 +69,5 @@ mock();
 
 function mock()
 {
-    $nums1 = [1, 2, 3, 0, 0, 0];
-    $m = 3;
-    $nums2 = [2, 5, 6];
-    $n = 3;
-    $ret = (new Solution())->merge($nums1, $m, $nums2, $n);
-    var_dump($ret);
+    echo (new Solution())->minWindow('ADOBECODEBANC', 'ABC') . "\n";
 }
