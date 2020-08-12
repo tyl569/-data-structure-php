@@ -48,16 +48,11 @@ class Solution
     }
 }
 
-mock();
+echo "======= test case start =======\n";
 
-function mock()
-{
-    echo "======= test case start =======\n";
+var_dump((new Solution())->isPalindrome("A man, a plan, a canal: Panama"));
+var_dump((new Solution())->isPalindrome("race a car"));
 
-    var_dump((new Solution())->isPalindrome("A man, a plan, a canal: Panama"));
-    var_dump((new Solution())->isPalindrome("race a car"));
-
-    echo "======= test case start =======\n";
-}
+echo "======= test case start =======\n";
 
 

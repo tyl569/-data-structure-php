@@ -65,9 +65,6 @@ class Solution
     }
 }
 
-mock();
-
-function mock()
-{
-    echo (new Solution())->minWindow('ADOBECODEBANC', 'ABC') . "\n";
-}
+echo "======= test case start =======\n";
+echo (new Solution())->minWindow('ADOBECODEBANC', 'ABC') . "\n";
+echo "======= test case end =======\n";

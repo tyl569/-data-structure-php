@@ -86,20 +86,16 @@ class LRUCache
     }
 }
 
-mock();
 
-function mock()
-{
-    echo "======= test case start =======\n";
-    $lruCache = new LRUCache(2);
-    $lruCache->put(1, 1);
-    $lruCache->put(2, 2);
-    echo $lruCache->get(1) . "\n";
-    $lruCache->put(3, 3);
-    echo $lruCache->get(2) . "\n";
-    $lruCache->put(4, 4);
-    echo $lruCache->get(1) . "\n";
-    echo $lruCache->get(3) . "\n";
-    echo $lruCache->get(4) . "\n";
-    echo "======= test case end =======\n";
-}
+echo "======= test case start =======\n";
+$lruCache = new LRUCache(2);
+$lruCache->put(1, 1);
+$lruCache->put(2, 2);
+echo $lruCache->get(1) . "\n";
+$lruCache->put(3, 3);
+echo $lruCache->get(2) . "\n";
+$lruCache->put(4, 4);
+echo $lruCache->get(1) . "\n";
+echo $lruCache->get(3) . "\n";
+echo $lruCache->get(4) . "\n";
+echo "======= test case end =======\n";

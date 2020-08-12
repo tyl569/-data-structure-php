@@ -32,9 +32,6 @@ class Solution
     }
 }
 
-mock();
-
-function mock()
-{
-    echo (new Solution())->maxSubArray([-2, 1, -3, 4, -1, 2, 1, -5, 4]);
-}
+echo "======= test case start =======\n";
+echo (new Solution())->maxSubArray([-2, 1, -3, 4, -1, 2, 1, -5, 4]);
+echo "======= test case end =======\n";

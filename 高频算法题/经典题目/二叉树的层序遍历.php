@@ -81,29 +81,24 @@ class Solution
     }
 }
 
-mock();
+echo "======= test case start =======\n";
 
-function mock()
-{
-    echo "======= test case start =======\n";
+$rootNode = new TreeNode(3);
+$node1 = new TreeNode(9);
+$node2 = new TreeNode(20);
 
-    $rootNode = new TreeNode(3);
-    $node1 = new TreeNode(9);
-    $node2 = new TreeNode(20);
+$node3 = new TreeNode(15);
+$node4 = new TreeNode(7);
 
-    $node3 = new TreeNode(15);
-    $node4 = new TreeNode(7);
+$rootNode->left = $node1;
+$rootNode->right = $node2;
+$node1->left = $node3;;
+$node2->right = $node4;
 
-    $rootNode->left = $node1;
-    $rootNode->right = $node2;
-    $node1->left = $node3;;
-    $node2->right = $node4;
+$ret = (new Solution())->levelOrder($rootNode);
+var_dump($ret);
 
-    $ret = (new Solution())->levelOrder($rootNode);
-    var_dump($ret);
+$ret = (new Solution())->levelOrder2($rootNode);
+var_dump($ret);
 
-    $ret = (new Solution())->levelOrder2($rootNode);
-    var_dump($ret);
-
-    echo "======= test case end =======\n";
-}
+echo "======= test case end =======\n";

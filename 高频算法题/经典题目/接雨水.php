@@ -71,12 +71,7 @@ class Solution
     }
 }
 
-mock();
-
-function mock()
-{
-    echo "======= test case start =======\n";
-    echo (new Solution())->trap_force([0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1]) . "\n";
-    echo (new Solution())->trap([0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1]) . "\n";
-    echo "======= test case end =======\n";
-}
+echo "======= test case start =======\n";
+echo (new Solution())->trap_force([0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1]) . "\n";
+echo (new Solution())->trap([0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1]) . "\n";
+echo "======= test case end =======\n";

@@ -67,12 +67,7 @@ class Solution
     }
 }
 
-mock();
-
-function mock()
-{
-    echo "======= test case start =======\n";
-    echo (new Solution())->maxProfit([7, 1, 5, 3, 6, 4]) . "\n";
-    echo (new Solution())->maxProfit2([7, 1, 5, 3, 6, 4]) . "\n";
-    echo "======= test case end =======\n";
-}
+echo "======= test case start =======\n";
+echo (new Solution())->maxProfit([7, 1, 5, 3, 6, 4]) . "\n";
+echo (new Solution())->maxProfit2([7, 1, 5, 3, 6, 4]) . "\n";
+echo "======= test case end =======\n";
