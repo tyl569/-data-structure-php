@@ -74,11 +74,30 @@ class Solution
 
         return $res;
     }
+
+    function productExceptSelf3($nums)
+    {
+        $res[0] = 1;
+        $r = 1;
+        for ($i = 1; $i < count($nums); $i++) {
+            $res[$i] = $res[$i - 1] * $nums[$i - 1];
+        }
+
+        for ($i = count($nums) - 1; $i >= 0; $i--) {
+            $res[$i] = $res[$i] * $r;
+            $r *= $nums[$i];
+        }
+        ksort($res);
+
+        return $res;
+    }
 }
 
 
 echo "======= test case start =======\n";
 var_dump((new Solution())->productExceptSelf([1, 2, 3, 4])) . "\n";
 var_dump((new Solution())->productExceptSelf2([1, 2, 3, 4])) . "\n";
+var_dump((new Solution())->productExceptSelf3([1, 2, 3, 4])) . "\n";
+
 
 echo "======= test case end =======\n";
